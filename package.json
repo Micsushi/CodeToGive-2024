@@ -1,0 +1,13 @@
+{
+  "name": "codetogive-2024",
+  "version": "1.0.0",
+  "description": "**Made with JavaScript and hosted on Firebase & Glitch!**",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "build": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

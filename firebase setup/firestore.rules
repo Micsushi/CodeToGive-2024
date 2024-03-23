@@ -1,0 +1,32 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // Matches any document in the 'residents' collection
+    match /residents/{residentId} {
+      allow read: if isResident(residentId) || isCaregiver();
+      allow write: if isCaregiver();
+    }
+
+    // Matches any document in the 'caregivers' collection
+    match /caregivers/{caregiverId} {
+      allow read, write: if isCaregiver();
+    }
+
+    // Matches documents in the subcollections of a resident's document, such as 'goals', 'interventions', etc.
+    match /residents/{residentId}/{collectionId}/{documentId} {
+      allow read: if isResident(residentId) || isCaregiver();
+      allow write: if isCaregiver();
+    }
+
+    // Function to check if the request is made by a caregiver
+    function isCaregiver() {
+      // Assuming caregivers' UIDs are stored in a 'caregivers' collection
+      return exists(/databases/$(database)/documents/caregivers/$(request.auth.uid));
+    }
+
+    // Function to check if the request is made by the specific resident
+    function isResident(residentId) {
+      return request.auth.uid == residentId;
+    }
+  }
+}

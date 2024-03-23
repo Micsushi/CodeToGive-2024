@@ -1,0 +1,30 @@
+{
+    "indexes": [
+      {
+        "collectionGroup": "residents",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "planStartDate", "order": "ASCENDING" },
+          { "fieldPath": "endOfStayDate", "order": "ASCENDING" }
+        ]
+      },
+      {
+        "collectionGroup": "goals",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "term", "order": "ASCENDING" },
+          { "fieldPath": "status", "order": "ASCENDING" }
+        ]
+      },
+      {
+        "collectionGroup": "interventions",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "date", "order": "ASCENDING" },
+          { "fieldPath": "type", "order": "ASCENDING" }
+        ]
+      }
+    ],
+    "fieldOverrides": []
+  }
+  
